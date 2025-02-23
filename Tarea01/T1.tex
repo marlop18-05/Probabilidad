@@ -1,0 +1,172 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+
+
+\title{\textsf{Probabilidad 1} \\ \textsf{Tarea 1}}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\hrule
+\par\bigskip
+
+
+\begin{enumerate}
+    \item 
+		\begin{enumerate}
+			\item ¿Cuántas placas de matrícula diferentes de 7 posiciones son posibles si los dos primeros lugares son para letras y los otros cinco para números? \par
+    
+				Sea $A$ = $\{ A, B, C, ..., X, Y, Z \}$ el conjunto del abecedario del español, $A \backslash \{$ ñ $\}$, y $D$ = $\{ 0, 1, ... , 9 \}$ el conjunto del sistema de numeraci\'on decimal. \\
+				
+				Como las primeras dos posiciones son para letras, por cada una de ellas se pueden elegir 1 de las $|A|$ letras, pero si tomamos en cuenta que podemos elegir la $H$ o la $Z$, practicamente cualquier letra,
+				debemos tomar todas las posibles opciones, osea las $|A|$. \\
+			
+				Ahora, para las 5 posiciones restantes, podemos elegir 1 de los $|D|$ n\'umeros por posici\'on, siguiendo la misma l\'ogica entonces tomemos todas las posibles opciones, lo que quiere decir que 
+				tenemos el producto cartesiano $A \times A \times D \times D \times D \times D \times D$.
+			
+				Y ya que $|A|$ = $26$ y $|D|$ = $10$, y por la definici\'on del producto cartesiano, tenemos:
+
+				\begin{flalign*}
+					|A \times A \times D \times D \times D \times D \times D| &= |A| \cdot |A| \cdot |D| \cdot |D| \cdot |D| \cdot |D| \cdot |D| \\
+					&= 26 \cdot 26 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \\
+					&= 26^2 \cdot 10^2 \\
+					&= 67,600,000 \text{ matr\'iculas diferentes.}
+				\end{flalign*}
+				
+				Ejemplo de matrícula: 
+				
+				\begin{center}
+
+					\framebox[0.8cm][c]{H} \framebox[0.8cm][c]{K} \framebox[0.8cm][c]{8} \framebox[0.8cm][c]{3} \framebox[0.8cm][c]{6} \framebox[0.8cm][c]{2} \framebox[0.8cm][c]{2}
+
+				\end{center} $ $\\
+
+			\item Repite la parte (a) bajo la suposición de que ninguna letra o número puede repetirse en una sola matrícula. \\
+
+				En este caso, cuando tomamos una letra $x\in A$ para la primera posici\'on, para la siguiente posici\'on debemos quitar la letra que ya elegimos, ya que no podemos repetirla, $|A \backslash \{ x \}|$ = $|A| - 1$ = $25$. \\
+				
+				Ahora, para las siguientes posiciones debemos tomar en cuenta de igual forma que al elegir un n\'umero para una posici\'on, para la siguiente posici\'on debemos quitar el n\'umero que ya elegimos anteriormente. \\
+
+				Para la 3ra casilla, podemos elegir $|D|$ n\'umeros, para la siguiente $|D \backslash \{ x \}|$ = $10 - 1$ = $9$, despues $|(D \backslash \{ x \}) \backslash \{ y \}|$ = $(10 - 1) - 1$ = $8$, con $x \in D$ y $y \in D \backslash \{ x \} $.\\
+				
+				Asi sucesivamente, por lo tanto, tenemos: 
+				\begin{center}
+					$26 \cdot 25 \cdot 10 \cdot 9 \cdot 8 \cdot 7 \cdot 6$ = $19,656,000$ matr\'iculas posibles.
+				\end{center}
+
+		\end{enumerate}
+
+    \item Se deben asignar 20 trabajadores a 20 trabajos diferentes, uno por cada trabajo. ¿Cuántas asignaciones diferentes son posibles?
+
+    \item John, Jim, Jay y Jack han formado una banda con 4 instrumentos. Si cada uno de los chicos puede tocar los 4 instrumentos, ¿cuántos arreglos diferentes son posibles? ¿Y si John y Jim pueden tocar todos los instrumentos, pero Jay y Jack solo pueden tocar piano y batería?
+
+    \item Durante años, los códigos de área telefónicos en los Estados Unidos y Canadá consistían en una secuencia de tres dígitos. El primer dígito era un número entre 2 y 9, el segundo era 0 o 1, y el tercero era cualquier número del 1 al 9. ¿Cuántos códigos de área eran posibles? ¿Cuántos códigos de área que comienzan con 4 eran posibles?
+
+    \item Una conocida rima infantil comienza así: \\
+          ``Cuando iba camino a St. Ives \\
+          Me encontré con un hombre con 7 esposas. \\
+          Cada esposa tenía 7 sacos. \\
+          Cada saco tenía 7 gatos. \\
+          Cada gato tenía 7 gatitos...''
+          ¿Cuántos gatitos encontró el viajero?
+
+    \item (a) ¿De cuántas maneras pueden sentarse en fila 3 niños y 3 niñas? \\
+          (b) ¿De cuántas maneras pueden sentarse si los niños y las niñas deben estar juntos? \\
+          (c) ¿Y si solo los niños deben estar juntos? \\
+          (d) ¿Y si no se permite que dos personas del mismo sexo se sienten juntas?
+
+    \item ¿Cuántos arreglos diferentes de letras pueden formarse con las siguientes palabras? \\
+          (a) Fluke \\
+          (b) Propose \\
+          (c) Mississippi \\
+          (d) Arrange
+
+    \item Un niño tiene 12 bloques, de los cuales 6 son negros, 4 son rojos, 1 es blanco y 1 es azul. Si coloca los bloques en una línea, ¿cuántos arreglos son posibles?
+
+    \item ¿De cuántas maneras pueden sentarse en una fila 8 personas si: \\
+          (a) No hay restricciones en el arreglo. \\
+          (b) Las personas A y B deben sentarse juntas. \\
+          (c) Hay 4 hombres y 4 mujeres y no se permite que dos hombres o dos mujeres se sienten juntos. \\
+          (d) Hay 5 hombres y deben sentarse juntos. \\
+          (e) Hay 4 parejas casadas y cada pareja debe sentarse junta.
+          
+		\item Determina el número de vectores $(x_1, \ldots, x_n)$ tales que $x_i$ es 1 o 0 y
+		$$
+		\sum_{i=1}^n x_i\geq k
+		$$
+		\item Considera la retícula:
+		\begin{center}
+			\begin{tikzpicture}
+
+				% Define grid dimensions
+				\def\xmax{4}
+				\def\ymax{3}
+
+				% Draw grid with nodes at intersections
+				\foreach \x in {0,...,\xmax} {
+				    \foreach \y in {0,...,\ymax} {
+				        \filldraw (\x,\y) circle (2pt); % Nodes
+				    }
+				}
+
+				% Draw horizontal and vertical lines
+				\foreach \x in {0,...,\xmax} {
+				    \draw (\x,0) -- (\x,\ymax);
+				}
+				\foreach \y in {0,...,\ymax} {
+				    \draw (0,\y) -- (\xmax,\y);
+				}
+
+				% Encircle the central node
+				\draw[thick] (2,2) circle (0.5);
+	
+				% Label A (bottom-left) and B (top-right)
+				\node[anchor=east] at (-0.2,0) {\large \( A \)};
+				\node[anchor=west] at (\xmax+0.2,\ymax) {\large \( B \)};
+
+			\end{tikzpicture}
+		
+			
+		\end{center}
+		
+			Si sólo podemos hacer movimientos hacia la izquierda o hacia arriba. ¿Cuantos caminos hay del punto $A$ al punto $B$? 			¿cuantas si es necesario pasar por el punto marcado con el círculo?
+		\item La siguiente identidad es conocida como la identidad combinatoria de Fermat:
+
+			\[
+			\binom{n}{k} = \sum_{i=k}^{n} \binom{i-1}{k-1}, \quad \text{para } n \geq k.
+			\]
+
+	Demuestra esta identidad utilizando un argumento combinatorio (sin cálculos). \\
+\textit{Sugerencia:} Considera el conjunto de números del 1 al \( n \). ¿Cuántos subconjuntos de tamaño \( k \) tienen \( i \) como su elemento más grande?
+
+		\item Demuestra la igualdad:
+
+\[
+\sum_{k=1}^{n} k \binom{n}{k} = n \cdot 2^{n-1}.
+\]
+Usando únicamente argumentos combinatorios.
+
+\textit{Sugerencia}
+
+    \begin{itemize}
+        \item ¿Cuántas selecciones hay para un comité de tamaño \( k \) y su presidente?
+        \item ¿Cuántas selecciones hay para un presidente y el resto del comité?
+    \end{itemize}
+		
+		\item Prueba usando argumentos combinatorios la igualdad:
+		\[
+		\binom{n+m}{r} = \binom{n}{0}\binom{m}{r} + \binom{n}{1}\binom{m}{r-1} + \cdots + \binom{n}{r}\binom{m}{0}
+		\]\\
+		\textit{Sugerencia:} Considera un grupo de $n$ hombres y $m$ mujeres. ¿Cuantos grupos de tamaño $r$ son posibles? 
+
+
+\end{enumerate}
+
+
+\end{document}

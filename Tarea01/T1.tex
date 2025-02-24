@@ -136,6 +136,69 @@
 		\end{center}
 		
 			Si sólo podemos hacer movimientos hacia la izquierda o hacia arriba. ¿Cuantos caminos hay del punto $A$ al punto $B$? 			¿cuantas si es necesario pasar por el punto marcado con el círculo?
+
+
+Para llegar del punto \(A\) al punto \(B\), es necesario moverse 4 pasos a la derecha y 4 pasos hacia arriba. En total, son \(4 + 4 = 8\) movimientos. Cada camino corresponde a una secuencia de 8 pasos, donde 4 son derechos (\(R\)) y 4 son hacia arriba (\(U\)).
+
+El número de maneras de organizar estos movimientos es el número de formas de elegir las posiciones de los 4 pasos a la derecha (o, equivalentemente, de los 4 pasos hacia arriba) dentro de los 8 pasos totales. Esto se expresa como el coeficiente binomial:
+
+\[
+\binom{8}{4} = \frac{8!}{4! \cdot 4!}.
+\]
+
+Calculando los factoriales, obtenemos:
+
+\[
+8! = 40320, \quad 4! = 24.
+\]
+
+Así, resulta:
+
+\[
+\binom{8}{4} = \frac{40320}{24 \times 24} = \frac{40320}{576} = 70.
+\]
+
+Por lo tanto, el número total de caminos de \(A\) a \(B\) es \(70\).
+
+\medskip
+
+Ahora consideremos el caso en que es necesario pasar por el punto marcado con el círculo. Dividimos el camino en dos tramos: de \(A\) al círculo y del círculo a \(B\).
+
+Primero, para llegar del punto \(A\) al círculo, se requieren 2 pasos a la derecha y 2 pasos hacia arriba. El número de formas de organizar estos movimientos es:
+
+\[
+\binom{4}{2} = \frac{4!}{2! \cdot 2!} = \frac{24}{4} = 6.
+\]
+
+Luego, desde el círculo hasta el punto \(B\), también se necesitan 2 pasos a la derecha y 2 pasos hacia arriba. El número de maneras es nuevamente:
+
+\[
+\binom{4}{2} = 6.
+\]
+
+Multiplicando las formas de cada tramo, obtenemos el número total de caminos pasando por el punto marcado:
+
+\[
+6 \times 6 = 36.
+\]
+
+Así, el número total de caminos si es necesario pasar por el punto marcado es \(36\).
+
+\medskip
+
+En conclusión, el número total de caminos del punto \(A\) al punto \(B\) es:
+
+\[
+70,
+\]
+
+y el número de caminos que pasan por el punto marcado con el círculo es:
+
+\[
+36.
+\]
+
+    %Mariana ejercicio 12
 		\item La siguiente identidad es conocida como la identidad combinatoria de Fermat:
 
 			\[
@@ -144,6 +207,42 @@
 
 	Demuestra esta identidad utilizando un argumento combinatorio (sin cálculos). \\
 \textit{Sugerencia:} Considera el conjunto de números del 1 al \( n \). ¿Cuántos subconjuntos de tamaño \( k \) tienen \( i \) como su elemento más grande?
+
+$\Rightarrow$\\
+Sea \(\mathbb{Z}^+ - \{0\}\), entonces para \(\binom{n}{k}\), el total de subconjuntos de tamaño \(k\) está determinado por \(n\) como \(n \geq k\).\\
+
+$\Leftarrow$\\
+Para
+\[
+\sum_{i=k}^n \binom{i-1}{k-1},
+\]
+con \(n \geq k\), consideremos el siguiente razonamiento:
+
+\begin{itemize}
+    \item Si \(i\) es el elemento más grande:\\
+    Esto implica que \(k \leq i \leq n\). Como \(i\) es el elemento más grande, los otros \(k-1\) elementos deben elegirse de entre \(\{1, 2, \dots, i-1\}\).  
+    El número de maneras de elegir esos \(k-1\) elementos es:
+    \[
+    \binom{i-1}{k-1}.
+    \]
+\end{itemize}
+
+Cada subconjunto de tamaño \(k\) tiene un único elemento máximo. No puede haber dos subconjuntos distintos con el mismo máximo que se cuenten dos veces.  
+Por lo tanto, al sumar sobre todos los posibles valores de \(i\), desde \(k\) hasta \(n\), recorremos todos los subconjuntos sin omisiones ni duplicados:
+
+\[
+\sum_{i=k}^{n} \binom{i-1}{k-1}.
+\]
+
+Como el máximo elemento \(i\) puede ser cualquier valor entre \(k\) y \(n\), podemos concluir que:
+
+\[
+\binom{n}{k} = \sum_{i=k}^{n} \binom{i-1}{k-1}, \quad \text{para } n \geq k.
+\]
+ 
+Hemos demostrado que ambas expresiones cuentan exactamente el mismo conjunto de subconjuntos de tamaño \(k\), completando así la demostración combinatoria de la identidad de Fermat.
+
+    %Mariana ejercicio 13
 
 		\item Demuestra la igualdad:
 
@@ -156,7 +255,57 @@ Usando únicamente argumentos combinatorios.
 
     \begin{itemize}
         \item ¿Cuántas selecciones hay para un comité de tamaño \( k \) y su presidente?
+
+   - Sea \(\gamma\) un subconjunto finito de tamaño \( k \) elegido de un conjunto de \( n \) elementos.
+    - Sea \( x \in \gamma \), un elemento particular elegido como presidente.
+
+    Para formar un subconjunto de tamaño \( k \) con un presidente distinguido:
+
+    \begin{enumerate}
+        \item Hay \( k \) maneras de elegir al presidente \( x \) dentro del subconjunto.
+        \item El número de maneras de elegir el subconjunto de tamaño \( k \) de entre \( n \) elementos es:
+        \[
+        \binom{n}{k}.
+        \]
+    \end{enumerate}
+
+    Por lo tanto, el número total de maneras de formar un comité de tamaño \( k \) y elegir a su presidente es:
+
+    \[
+    \sum_{k=1}^{n} k \binom{n}{k}.
+    \]
+
+
+
+    
         \item ¿Cuántas selecciones hay para un presidente y el resto del comité?
+    Ahora, contemos el mismo conjunto de maneras usando otro enfoque:
+
+    1. Primero, elegimos un presidente \( x \) del conjunto original de \( n \) elementos.  
+    Hay \( n \) maneras de elegir a dicho presidente.
+
+    2. Después de elegir al presidente, el resto del comité se forma seleccionando cualquier subconjunto de los \( n - 1 \) elementos restantes.
+
+    El número de subconjuntos de un conjunto de tamaño \( n-1 \) es:
+
+    \[
+    2^{n-1}.
+    \]
+
+    Por lo tanto, multiplicamos las \( n \) maneras de elegir al presidente por las \( 2^{n-1} \) maneras de elegir el comité restante:
+
+    \[
+    n \times 2^{n-1}.
+    \]
+
+    Este es exactamente el valor del lado derecho de la identidad.
+
+Hemos contado el número total de maneras de formar un comité con presidente de dos maneras distintas y llegamos a la misma expresión:
+
+\[
+\sum_{k=1}^{n} k \binom{n}{k} = n \times 2^{n-1}.
+\]
+        
     \end{itemize}
 		
 		\item Prueba usando argumentos combinatorios la igualdad:
